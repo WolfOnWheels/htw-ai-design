@@ -43,6 +43,7 @@ a:hover { color: var(--ink); }
 .hero .lead { font-size: 20px; line-height: 30px; color: var(--ink); max-width: 34rem; margin: 0 0 28px; }
 .stats { display: flex; flex-wrap: wrap; gap: 12px 32px; margin: 0; padding: 0; list-style: none; }
 .stats li { display: grid; gap: 2px; }
+.hero-link { margin: 28px 0 0; font-weight: 700; }
 .stats b { font-size: 32px; line-height: 36px; font-variant-numeric: tabular-nums; }
 .stats span { font-size: 14px; color: var(--ink-muted); }
 .ai { width: 100%; max-width: 560px; justify-self: end; display: block; }
@@ -140,6 +141,43 @@ main .wrap { padding-block: 40px 64px; }
 .admin th { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-muted); }
 .admin td.n { font-variant-numeric: tabular-nums; color: var(--ink-muted); }
 
+/* Submission */
+.sub { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); display: grid; gap: 40px; scroll-margin-top: 16px; }
+.sub-head { display: grid; gap: 8px; }
+.sub-head h2 { font-size: 40px; line-height: 46px; margin: 0; }
+.sub-lead { margin: 0; font-size: 18px; line-height: 28px; color: var(--ink-muted); max-width: 44rem; }
+.sub-parts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.sub-part { display: grid; gap: 8px; align-content: start; padding: 24px; background: var(--surface-alt); color: var(--ink); text-decoration: none; border-top: 6px solid var(--green); }
+.sub-part:hover { background: #303030; color: var(--ink); }
+.sub-part b { font-size: 22px; line-height: 28px; }
+.sub-part span:last-child { color: var(--ink-muted); font-size: 15px; line-height: 22px; }
+.sub-n { width: 40px; height: 40px; background: var(--green); color: var(--on-action); font-weight: 700; font-size: 22px; line-height: 40px; text-align: center; margin-bottom: 8px; }
+.pres, .rules { scroll-margin-top: 16px; }
+.pres { display: grid; gap: 16px; }
+.pres h3, .rule-col h3 { font-size: 28px; line-height: 34px; margin: 0; }
+.timebar { display: flex; gap: 3px; height: 40px; margin-top: 8px; }
+.seg { background: var(--green); color: var(--on-action); display: flex; align-items: center; padding-left: 8px; font-size: 14px; min-width: 0; overflow: hidden; }
+.seg.qa { background: var(--surface-alt); color: var(--ink-muted); }
+.steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+.step { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); align-items: start; }
+.step-n { width: 32px; height: 32px; border: 2px solid var(--green); color: var(--green); font-weight: 700; line-height: 28px; text-align: center; }
+.step-body h4 { margin: 0 0 4px; font-size: 18px; line-height: 24px; }
+.step-body p { margin: 0; }
+.step-note { color: var(--ink-muted); font-size: 14px; line-height: 20px; margin-top: 4px !important; }
+.step-min { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--green); line-height: 24px; }
+.totals { display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 8px 0 0; }
+.totals div { display: grid; gap: 2px; }
+.totals dt { font-size: 14px; color: var(--ink-muted); }
+.totals dd { margin: 0; font-size: 24px; line-height: 30px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 48px; }
+.rule-col { display: grid; gap: 12px; align-content: start; scroll-margin-top: 16px; }
+.rule-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.rule-col li { display: grid; grid-template-columns: 10px 1fr; gap: 12px; }
+.rule-col li::before { content: ""; width: 10px; height: 10px; background: var(--green); margin-top: 7px; }
+.sub-note { margin: 0; padding: 16px 20px; background: var(--surface-tint); font-size: 15px; line-height: 22px; }
+@media (max-width: 900px) { .sub-parts, .rules { grid-template-columns: 1fr; } .sub-head h2 { font-size: 32px; line-height: 38px; } }
+@media (max-width: 560px) { .seg b { font-size: 12px; } .step { grid-template-columns: 32px minmax(0, 1fr); } .step-min { grid-column: 2; } }
+
 footer { border-top: 1px solid var(--border); }
 footer .wrap { padding-block: 24px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 13px; line-height: 18px; color: var(--ink-muted); }
 
@@ -174,25 +212,18 @@ footer .wrap { padding-block: 24px 40px; display: flex; flex-wrap: wrap; justify
     <div>
       <span class="label">HTW Berlin · Seminar</span>
       <h1 id="h1">AI in Design &amp; Business Communication</h1>
-      <p class="lead">Pick one of 26 topics, research it with AI, and turn your findings into an artifact. The six clusters move from understanding the technology, to using it, to its consequences.</p>
+      <p class="lead">Pick one of 26 topics, research it with AI, make an artifact and present your findings. The six clusters move from understanding the technology, to using it, to its consequences.</p>
       <ul class="stats" aria-live="polite">
         <li><b id="st-open">26</b><span>topics still open</span></li>
         <li><b id="st-people">0</b><span>students signed up</span></li>
         <li><b>2</b><span>places per topic</span></li>
       </ul>
+      <p class="hero-link"><a href="#submission">What you hand in: presentation, artifact, diary log ↓</a></p>
     </div>
     <svg class="ai" id="ai-grid" data-w="16" data-h="10" viewBox="0 0 16 10" role="img" aria-label="A grid of green squares that keeps forming the letters AI and dissolving again"><rect x="0.06" y="0.06" width=".88" height=".88"/><rect x="1.06" y="0.06" width=".88" height=".88"/><rect x="2.06" y="0.06" width=".88" height=".88"/><rect x="3.06" y="0.06" width=".88" height=".88"/><rect x="4.06" y="0.06" width=".88" height=".88"/><rect x="5.06" y="0.06" width=".88" height=".88"/><rect class="n" x="6.06" y="0.06" width=".88" height=".88"/><rect x="7.06" y="0.06" width=".88" height=".88"/><rect x="8.06" y="0.06" width=".88" height=".88"/><rect x="9.06" y="0.06" width=".88" height=".88"/><rect x="10.06" y="0.06" width=".88" height=".88"/><rect x="11.06" y="0.06" width=".88" height=".88"/><rect x="12.06" y="0.06" width=".88" height=".88"/><rect x="13.06" y="0.06" width=".88" height=".88"/><rect x="14.06" y="0.06" width=".88" height=".88"/><rect x="15.06" y="0.06" width=".88" height=".88"/><rect x="0.06" y="1.06" width=".88" height=".88"/><rect x="1.06" y="1.06" width=".88" height=".88"/><rect x="2.06" y="1.06" width=".88" height=".88"/><rect class="on" x="3.06" y="1.06" width=".88" height=".88"/><rect class="on" x="4.06" y="1.06" width=".88" height=".88"/><rect class="on" x="5.06" y="1.06" width=".88" height=".88"/><rect x="6.06" y="1.06" width=".88" height=".88"/><rect x="7.06" y="1.06" width=".88" height=".88"/><rect x="8.06" y="1.06" width=".88" height=".88"/><rect x="9.06" y="1.06" width=".88" height=".88"/><rect x="10.06" y="1.06" width=".88" height=".88"/><rect x="11.06" y="1.06" width=".88" height=".88"/><rect x="12.06" y="1.06" width=".88" height=".88"/><rect x="13.06" y="1.06" width=".88" height=".88"/><rect class="n" x="14.06" y="1.06" width=".88" height=".88"/><rect x="15.06" y="1.06" width=".88" height=".88"/><rect x="0.06" y="2.06" width=".88" height=".88"/><rect x="1.06" y="2.06" width=".88" height=".88"/><rect x="2.06" y="2.06" width=".88" height=".88"/><rect x="3.06" y="2.06" width=".88" height=".88"/><rect x="4.06" y="2.06" width=".88" height=".88"/><rect x="5.06" y="2.06" width=".88" height=".88"/><rect class="on" x="6.06" y="2.06" width=".88" height=".88"/><rect x="7.06" y="2.06" width=".88" height=".88"/><rect x="8.06" y="2.06" width=".88" height=".88"/><rect class="on" x="9.06" y="2.06" width=".88" height=".88"/><rect class="on" x="10.06" y="2.06" width=".88" height=".88"/><rect class="on" x="11.06" y="2.06" width=".88" height=".88"/><rect x="12.06" y="2.06" width=".88" height=".88"/><rect x="13.06" y="2.06" width=".88" height=".88"/><rect x="14.06" y="2.06" width=".88" height=".88"/><rect x="15.06" y="2.06" width=".88" height=".88"/><rect x="0.06" y="3.06" width=".88" height=".88"/><rect x="1.06" y="3.06" width=".88" height=".88"/><rect class="on" x="2.06" y="3.06" width=".88" height=".88"/><rect x="3.06" y="3.06" width=".88" height=".88"/><rect x="4.06" y="3.06" width=".88" height=".88"/><rect x="5.06" y="3.06" width=".88" height=".88"/><rect x="6.06" y="3.06" width=".88" height=".88"/><rect x="7.06" y="3.06" width=".88" height=".88"/><rect x="8.06" y="3.06" width=".88" height=".88"/><rect x="9.06" y="3.06" width=".88" height=".88"/><rect x="10.06" y="3.06" width=".88" height=".88"/><rect x="11.06" y="3.06" width=".88" height=".88"/><rect x="12.06" y="3.06" width=".88" height=".88"/><rect x="13.06" y="3.06" width=".88" height=".88"/><rect x="14.06" y="3.06" width=".88" height=".88"/><rect x="15.06" y="3.06" width=".88" height=".88"/><rect x="0.06" y="4.06" width=".88" height=".88"/><rect x="1.06" y="4.06" width=".88" height=".88"/><rect class="on" x="2.06" y="4.06" width=".88" height=".88"/><rect x="3.06" y="4.06" width=".88" height=".88"/><rect class="on" x="4.06" y="4.06" width=".88" height=".88"/><rect x="5.06" y="4.06" width=".88" height=".88"/><rect x="6.06" y="4.06" width=".88" height=".88"/><rect class="on" x="7.06" y="4.06" width=".88" height=".88"/><rect x="8.06" y="4.06" width=".88" height=".88"/><rect x="9.06" y="4.06" width=".88" height=".88"/><rect class="on" x="10.06" y="4.06" width=".88" height=".88"/><rect x="11.06" y="4.06" width=".88" height=".88"/><rect x="12.06" y="4.06" width=".88" height=".88"/><rect x="13.06" y="4.06" width=".88" height=".88"/><rect x="14.06" y="4.06" width=".88" height=".88"/><rect class="n" x="15.06" y="4.06" width=".88" height=".88"/><rect x="0.06" y="5.06" width=".88" height=".88"/><rect x="1.06" y="5.06" width=".88" height=".88"/><rect class="on" x="2.06" y="5.06" width=".88" height=".88"/><rect x="3.06" y="5.06" width=".88" height=".88"/><rect x="4.06" y="5.06" width=".88" height=".88"/><rect x="5.06" y="5.06" width=".88" height=".88"/><rect class="on" x="6.06" y="5.06" width=".88" height=".88"/><rect x="7.06" y="5.06" width=".88" height=".88"/><rect x="8.06" y="5.06" width=".88" height=".88"/><rect x="9.06" y="5.06" width=".88" height=".88"/><rect class="on" x="10.06" y="5.06" width=".88" height=".88"/><rect x="11.06" y="5.06" width=".88" height=".88"/><rect x="12.06" y="5.06" width=".88" height=".88"/><rect x="13.06" y="5.06" width=".88" height=".88"/><rect x="14.06" y="5.06" width=".88" height=".88"/><rect x="15.06" y="5.06" width=".88" height=".88"/><rect x="0.06" y="6.06" width=".88" height=".88"/><rect x="1.06" y="6.06" width=".88" height=".88"/><rect class="on" x="2.06" y="6.06" width=".88" height=".88"/><rect x="3.06" y="6.06" width=".88" height=".88"/><rect x="4.06" y="6.06" width=".88" height=".88"/><rect x="5.06" y="6.06" width=".88" height=".88"/><rect class="on" x="6.06" y="6.06" width=".88" height=".88"/><rect x="7.06" y="6.06" width=".88" height=".88"/><rect x="8.06" y="6.06" width=".88" height=".88"/><rect x="9.06" y="6.06" width=".88" height=".88"/><rect class="on" x="10.06" y="6.06" width=".88" height=".88"/><rect x="11.06" y="6.06" width=".88" height=".88"/><rect x="12.06" y="6.06" width=".88" height=".88"/><rect class="n" x="13.06" y="6.06" width=".88" height=".88"/><rect x="14.06" y="6.06" width=".88" height=".88"/><rect x="15.06" y="6.06" width=".88" height=".88"/><rect x="0.06" y="7.06" width=".88" height=".88"/><rect x="1.06" y="7.06" width=".88" height=".88"/><rect class="on" x="2.06" y="7.06" width=".88" height=".88"/><rect x="3.06" y="7.06" width=".88" height=".88"/><rect x="4.06" y="7.06" width=".88" height=".88"/><rect x="5.06" y="7.06" width=".88" height=".88"/><rect class="on" x="6.06" y="7.06" width=".88" height=".88"/><rect x="7.06" y="7.06" width=".88" height=".88"/><rect x="8.06" y="7.06" width=".88" height=".88"/><rect x="9.06" y="7.06" width=".88" height=".88"/><rect class="on" x="10.06" y="7.06" width=".88" height=".88"/><rect x="11.06" y="7.06" width=".88" height=".88"/><rect x="12.06" y="7.06" width=".88" height=".88"/><rect x="13.06" y="7.06" width=".88" height=".88"/><rect x="14.06" y="7.06" width=".88" height=".88"/><rect x="15.06" y="7.06" width=".88" height=".88"/><rect x="0.06" y="8.06" width=".88" height=".88"/><rect x="1.06" y="8.06" width=".88" height=".88"/><rect x="2.06" y="8.06" width=".88" height=".88"/><rect x="3.06" y="8.06" width=".88" height=".88"/><rect x="4.06" y="8.06" width=".88" height=".88"/><rect x="5.06" y="8.06" width=".88" height=".88"/><rect x="6.06" y="8.06" width=".88" height=".88"/><rect x="7.06" y="8.06" width=".88" height=".88"/><rect x="8.06" y="8.06" width=".88" height=".88"/><rect class="on" x="9.06" y="8.06" width=".88" height=".88"/><rect class="on" x="10.06" y="8.06" width=".88" height=".88"/><rect class="on" x="11.06" y="8.06" width=".88" height=".88"/><rect class="on" x="12.06" y="8.06" width=".88" height=".88"/><rect x="13.06" y="8.06" width=".88" height=".88"/><rect x="14.06" y="8.06" width=".88" height=".88"/><rect x="15.06" y="8.06" width=".88" height=".88"/><rect class="n" x="0.06" y="9.06" width=".88" height=".88"/><rect x="1.06" y="9.06" width=".88" height=".88"/><rect x="2.06" y="9.06" width=".88" height=".88"/><rect x="3.06" y="9.06" width=".88" height=".88"/><rect x="4.06" y="9.06" width=".88" height=".88"/><rect x="5.06" y="9.06" width=".88" height=".88"/><rect x="6.06" y="9.06" width=".88" height=".88"/><rect x="7.06" y="9.06" width=".88" height=".88"/><rect x="8.06" y="9.06" width=".88" height=".88"/><rect x="9.06" y="9.06" width=".88" height=".88"/><rect x="10.06" y="9.06" width=".88" height=".88"/><rect x="11.06" y="9.06" width=".88" height=".88"/><rect x="12.06" y="9.06" width=".88" height=".88"/><rect x="13.06" y="9.06" width=".88" height=".88"/><rect x="14.06" y="9.06" width=".88" height=".88"/><rect x="15.06" y="9.06" width=".88" height=".88"/></svg>
   </div>
 </section>
 
-<section class="parts" aria-labelledby="parts-h">
-  <div class="wrap">
-    <h2 id="parts-h" class="label">Every submission has three parts, all published on the course website</h2>
-    <div class="part"><b>The artifact, made for the web</b><p>A web page, or media a web page can show: images, an embedded video or audio file, an interactive prototype, a PDF. Choose the format that fits your topic. Also hand in a title, a one-sentence summary and a cover image (16:9, at least 1600 px wide) for its tile on the course homepage.</p></div>
-    <div class="part"><b>A process log (1 page)</b><p>Which AI tools you used, your key prompts, what the AI got wrong or made up, and which decisions you made yourself. Published next to your artifact.</p></div>
-    <div class="part"><b>Sources</b><p>Every source you used, with the date you accessed it, as links. AI answers are not sources; the pages they point to are.</p></div>
-    <p class="parts-note">At the end of the semester all submissions go on this website: a homepage with one tile per topic, each linking to its artifact, process log and sources. Only publish material you have the rights to, and credit every image.</p></div>
-</section>
 
 <main>
   <div class="wrap">
@@ -205,6 +236,57 @@ footer .wrap { padding-block: 24px 40px; display: flex; flex-wrap: wrap; justify
     </div>
     <div id="notice" class="notice" role="status"></div>
     <div id="grid" class="grid"></div>
+    <section class="sub" id="submission" aria-labelledby="sub-h">
+      <div class="sub-head">
+        <span class="label">Submission</span>
+        <h2 id="sub-h">What you hand in</h2>
+        <p class="sub-lead">Three parts for every topic, all due on your presentation date.</p>
+      </div>
+      <div class="sub-parts">
+        <a class="sub-part" href="#presentation"><span class="sub-n" aria-hidden="true">1</span><b>Presentation</b><span>15–20 minutes on your topic, then 10 minutes of Q&amp;A and discussion. Slides may be made with or without AI.</span></a>
+        <a class="sub-part" href="#rules-artifact"><span class="sub-n" aria-hidden="true">2</span><b>Artifact</b><span>An infographic, image, web page, video or similar, made with AI for your topic and published on the course website.</span></a>
+        <a class="sub-part" href="#rules-diary"><span class="sub-n" aria-hidden="true">3</span><b>Diary log with sources</b><span>A running log of how you used AI, plus every source you used with the date you accessed it.</span></a>
+      </div>
+
+      <div class="pres" id="presentation">
+        <h3>Presentation structure</h3>
+        <p class="sub-lead">Six parts in this order. Aim for 15–20 minutes, followed by 10 minutes of Q&amp;A and discussion.</p>
+        <div class="timebar" role="img" aria-label="Time split: 19 minutes of presentation in six parts at most, then 10 minutes of Q&amp;A"><span class="seg" style="flex:2" title="Thesis / hook: 1–2 min"><b>1</b></span><span class="seg" style="flex:3" title="Research summary (context): 3 min"><b>2</b></span><span class="seg" style="flex:5" title="Evidence: 4–5 min"><b>3</b></span><span class="seg" style="flex:3" title="Surprising finding: 2–3 min"><b>4</b></span><span class="seg" style="flex:4" title="Counter-argument: 3–4 min"><b>5</b></span><span class="seg" style="flex:2" title="Conclusion: 1–2 min"><b>6</b></span><span class="seg qa" style="flex:10" title="Q&amp;A and discussion: 10 min"><b>Q&amp;A</b></span></div>
+        <ol class="steps"><li class="step"><span class="step-n" aria-hidden="true">1</span><div class="step-body"><h4>Thesis / hook</h4><p>One clear claim, or a question the talk will answer.</p><p class="step-note">May open with the surprising finding instead.</p></div><span class="step-min">1–2 min</span></li><li class="step"><span class="step-n" aria-hidden="true">2</span><div class="step-body"><h4>Research summary (context)</h4><p>What the audience needs to know about the topic to follow the argument.</p><p class="step-note">Context only; save the supporting data for the evidence part.</p></div><span class="step-min">3 min</span></li><li class="step"><span class="step-n" aria-hidden="true">3</span><div class="step-body"><h4>Evidence</h4><p>Data, cases and examples that support the thesis. Show the AI-generated artifact here.</p><p class="step-note">The slides do not count as the artifact.</p></div><span class="step-min">4–5 min</span></li><li class="step"><span class="step-n" aria-hidden="true">4</span><div class="step-body"><h4>Surprising finding</h4><p>One thing that surprised you or changed your view during the research.</p><p class="step-note">The AI diary is a good source for this.</p></div><span class="step-min">2–3 min</span></li><li class="step"><span class="step-n" aria-hidden="true">5</span><div class="step-body"><h4>Counter-argument</h4><p>The strongest opposing view, held by a reasonable person, with a source, and your response to it.</p><p class="step-note">No straw men.</p></div><span class="step-min">3–4 min</span></li><li class="step"><span class="step-n" aria-hidden="true">6</span><div class="step-body"><h4>Conclusion</h4><p>Return to the thesis. End with one or two open questions for the room.</p><p class="step-note">The questions start the discussion.</p></div><span class="step-min">1–2 min</span></li></ol>
+        <dl class="totals">
+          <div><dt>Presentation</dt><dd>14–19 min</dd></div>
+          <div><dt>Q&amp;A and discussion</dt><dd>10 min</dd></div>
+          <div><dt>Total session</dt><dd>24–29 min</dd></div>
+        </dl>
+        <p class="hint">Minute ranges are guidelines from the course lecturer, not strict limits. Open the Q&amp;A with your one or two questions for the room.</p>
+      </div>
+
+      <div class="rules">
+        <div class="rule-col" id="rules-artifact">
+          <h3>Rules for the artifact</h3>
+          <ul>
+            <li>Make it with AI, for your topic: an infographic, image, web page, video or similar.</li>
+            <li>The presentation slides do not count as the artifact.</li>
+            <li>Show it during the evidence part of your presentation.</li>
+            <li>Make it for the web: a web page, or media a web page can show (images, embedded video or audio, an interactive prototype, a PDF).</li>
+            <li>Hand in a title, a one-sentence summary and a cover image (16:9, at least 1600 px wide) for its tile on the course homepage.</li>
+            <li>Only publish material you have the rights to, and credit every image.</li>
+          </ul>
+        </div>
+        <div class="rule-col" id="rules-diary">
+          <h3>Rules for the diary log and sources</h3>
+          <ul>
+            <li>Keep the diary while you work: the AI tools you used, your key prompts, what worked, what the AI got wrong, and what you decided yourself.</li>
+            <li>Check AI answers against the pages they point to.</li>
+            <li>List every source you used, with the date you accessed it. AI answers are not sources; the pages they point to are.</li>
+            <li>Hand in the diary with your presentation. It is published next to your artifact.</li>
+            <li>Read it back before you present: it is the best place to find your surprising finding.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sub-note">At the end of the semester all submissions go on this website: a homepage with one tile per topic, each linking to its artifact and diary log.</p>
+    </section>
+
     
   </div>
 </main>
