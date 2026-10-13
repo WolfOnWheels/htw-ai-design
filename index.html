@@ -439,7 +439,7 @@ function renderAdmin() {
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Sign-up backend: the Google Apps Script web app URL (ends in /exec). Empty = sign-up shows "opens soon".
-const API = '';
+const API = 'https://script.google.com/macros/s/AKfycbyaXQkcQuhKBmcWt0Ko988eLzmg3yTGmzJEbOUu4MDDaUtSnUV0KWY84wvSZMbAkxxa/exec';
 const STORE = 'htw-ai-design-signups';
 function loadMine() { try { return JSON.parse(localStorage.getItem(STORE) || '{}') || {}; } catch (e) { return {}; } }
 function saveMine() { try { localStorage.setItem(STORE, JSON.stringify(S.mine)); } catch (e) {} }
